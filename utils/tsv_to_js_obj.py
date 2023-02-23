@@ -45,13 +45,14 @@ def main():
     f = fr.text
     data = f.split('\n')
     data = data[1::]
+    print(data)
     jstext = "const techniques = [\n"
     print(len(data))
     for img, datum in zip(imgs, data):
         values = datum.split("\t")
         #print("before: ", values)
         for i in range(len(values)):
-            values[i] = values[i].strip(" \n")
+            values[i] = values[i].strip(" \n\t\r")
         #print("after: ", values)
         parts = '"' + values[2].replace(',', '","') + '"'
         partnames = str(get_item_names(parts))
